@@ -1,4 +1,4 @@
 all: 
-	g++ main.cpp -L. -lpcap -o output
+	g++ TCPSYN-Sniffer.cpp -L. -lpcap -o output
 clearn:
 	rm *.o output
