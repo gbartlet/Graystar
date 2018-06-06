@@ -40,6 +40,10 @@ int main(int argc, char *argv[])
         cout << "Could not open the device." << errbuf << endl;
         return 1;
     }
+        if (pcap_setdirection (handle, PCAP_D_IN) == -1)    // if's condition: setting the direction of the device to look for receiving packages
+    {
+        cout << "Direction was not set: " << pcap_geterr(handle) << endl;
+    }
     
     if (pcap_compile(handle, &fcode, filter_exp, 0, ip) == -1)  //if's condition: compiling the filter (TCP SYN) before applying it
     {
