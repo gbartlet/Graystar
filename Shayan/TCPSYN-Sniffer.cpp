@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 {
     char* dev = NULL;       //device
     bpf_program fcode;      // Berkeley packet filter struct - accessing to the data link layers for packets to be sent or received
-    char filter_exp[] = "tcp[tcpflags] & (tcp-syn) != 0 and (tcp-ack) == 0";       // Setting the filter expression to TCP SYN
+    char filter_exp[] = "tcp[tcpflags] & (tcp-ack) == 0 and (tcp-syn) != 0";       // Setting the filter expression to TCP SYN
     char errbuf[PCAP_ERRBUF_SIZE];      // buffer that contains libcap errors
     bpf_u_int32 subnet_mask = 0, ip = 0;
     pcap_t* handle;     //pcap handle
