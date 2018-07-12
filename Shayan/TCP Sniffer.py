@@ -68,7 +68,7 @@ def packet_format(packet):
                     ,currentDT.second, flag, length)
 
 
-sniff (filter = "tcp[tcpflags] & (tcp-ack) == 0 and (tcp-syn) != 0", prn=packet_format)
+sniff (iface = "en0",filter = "tcp[tcpflags] & (tcp-ack) == 0 and (tcp-syn) != 0", prn=packet_format)
 conn.close()
 
 
