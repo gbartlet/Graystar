@@ -60,7 +60,7 @@ def packet_format(packet):
         else:
             flag = packet.sprintf("%TCP.flags%")
         length = len (packet)
-        c.execute ("INSERT INTO GrayStar2 VALUES (?,?,?,?,?,?,?,?)", (cnt, packet[0][1].src,packet.sport, packet[0][1].dst, packet.dport, str(currentDT.hour) + str(currentDT.minute) +str(currentDT.second), flag, length))
+        c.execute ("INSERT INTO GrayStar VALUES (?,?,?,?,?,?,?,?)", (cnt, packet[0][1].src,packet.sport, packet[0][1].dst, packet.dport, str(currentDT.hour) + str(currentDT.minute) +str(currentDT.second), flag, length))
         conn.commit()
         return "packet #{}: Source IP: {}     Source Port: {}     --> Destination IP: {}      Destination Port: {}" \
                "  *Time: {}:{}:{}   Flag: {} Length: {}"\
