@@ -46,6 +46,10 @@ for interface in netifaces.interfaces():
 
 local_ip = addrs[1]
 
+# Finding the device to sniff on
+nf = netifaces.gateways()
+dev = nf['default'][netifaces.AF_INET][1]
+
 cnt = 0
 def packet_format(packet):
     currentDT = datetime.now()
@@ -68,7 +72,7 @@ def packet_format(packet):
                     ,currentDT.second, flag, length)
 
 
-sniff (iface = "en0",filter = "tcp[tcpflags] & (tcp-ack) == 0 and (tcp-syn) != 0", prn=packet_format)
+sniff (iface = dev,filter = "tcp[tcpflags] & (tcp-ack) == 0 and (tcp-syn) != 0", prn=packet_format)
 conn.close()
 
 
