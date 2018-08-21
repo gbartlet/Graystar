@@ -8,6 +8,25 @@ import os
 import platform
 import _datetime
 
+##################################################################
+#SERVER
+#Assign each volunteer a unique id from a text file on the server
+#This requires a text file with a number 1 in it
+f = open ("address of the text file on the server", "r+")
+
+lineList = f.readlines()
+
+user_id = int(lineList[len(lineList)-1])
+
+f.close()
+
+f = open ("address of the text file on the server", "a+")
+
+f.write("\n%d" % (user_id+1))
+
+f.close()
+##################################################################
+
 #creating a database
 sqlite_file = '~/Desktop/data.db'
 conn = sqlite3.connect (sqlite_file)
