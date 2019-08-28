@@ -63,7 +63,7 @@ for interface in netifaces.interfaces():
         pass
 
 
-local_ip = addrs[1]
+local_ip = addrs[2]
 
 # Finding the device to sniff on
 nf = netifaces.gateways()
