@@ -16,10 +16,8 @@ async def handle_echo(reader, writer):
     # conn.commit()
     # print(f"Received {message!r} from {addr!r}")
     dt = message.split()
-    #print (dt[0])
     c.execute ("INSERT INTO GrayStar VALUES (?,?,?,?,?,?,?,?)", (dt[0], dt[1], dt[2], dt[3], str(dt[4]) + str(dt[5]) +str(dt[6]), dt[7], dt[8], dt[9]))
     conn.commit()
-    print(dt[0])
     writer.write(data)
     await writer.drain()
     writer.close()
@@ -35,6 +33,3 @@ async def main():
         await server.serve_forever()
 
 asyncio.run(main())
-
-
-#Packet #10: 192.168.0.7
